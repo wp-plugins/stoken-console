@@ -1,0 +1,44 @@
+.stoken { background: #fafafa; border: 1px solid #f0f0f0; overflow: hidden; display: block; position: relative; width: 448px;}
+.stoken { background: #020; border: 1px solid #040; font-size: 10px;}
+
+#stokenfetch { border:1px solid #004400;}
+#stokenfetch #token { float: left; margin: 1px 0 0; min-width: 380px; background: #020; color: #0e0; font-size: 10px; line-height: 13px; border: none;}
+
+/*#stokenfetch #inputblock { border: 1px solid #040;}
+*/
+.stoken, #stokenfetch #token, .stoken-receipt pre { font-family:'Lucida Console',Consolas,'Bitstream Vera Sans Mono','DejaVu Sans Mono',monospace; color: #0e0;  }
+#stokensubmit { background: #020; border: 1px solid #0a0; color: #0e0; font-size: 10px;}
+
+#stokensubmit { float: right; margin: 2px 0 0;}
+.stoken-receipt { min-height: 240px; padding: 8px;}
+.stoken-receipt pre { margin: 0; font-size: 11px; }
+
+
+ a.btn , a.btn span { background: transparent url('button.png') no-repeat scroll left 0; margin: 0 15px 0 0;  padding: 0 0 0 15px;  display: -moz-inline-box; display: inline-block;  height: 22px;   font: 16px; 	line-height: 22px; color: #434140; text-decoration: none; } 
+a.btn { background-position: right 0; margin: 0; padding: 0; }
+
+
+.stokenTable tr td { padding: 4px 10px; min-width: 150px;}
+.stokenTable tr td.btns { padding: 4px 10px; min-width: 190px;}
+.stokenTable tr td.btns a { margin: 0 6px;}
+.stokenTable tr.odd { background: #f2f2f2;}
+
+a.stokentext { text-decoration: none; color: #000;}
+
+.stoken #author { position: absolute; top: 0px; right: 1px; font-size: 9px; line-height: 9px; margin: 0; padding: 0;}
+.stoken #author a { color: #050;}
+
+/* make sure the pre-formatted text will wrap correctly - wrapping is better than overflow in our case 
+many thanks to http://perishablepress.com/press/2009/11/09/perfect-pre-tags/
+
+*/
+.stoken-receipt pre {
+	width: 440px;                          /* specify width  */
+	white-space: pre-wrap;                 /* CSS3 browsers  */
+	white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+	white-space: -pre-wrap;                /* Opera 4 thru 6 */
+	white-space: -o-pre-wrap;              /* Opera 7 and up */
+	word-wrap: break-word;                 /* IE 5.5+ and up */
+	/* overflow-x: auto; */                /* Firefox 2 only */
+	/* width: 99%; */		       /* only if needed */
+	}
