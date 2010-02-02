@@ -48,9 +48,9 @@ class StokenAdminFormTokenEdit extends StokenAdminForm
 		$out .= '<form action="" method="post" id="stoken-add" style="width: 400px; ">
 		<input type="hidden" name="id" value="' . $id .'" id="id">
 		<h3><label for="token">Token</label></h3>
-		<p><input id="token" name="token" type="text" size="46" maxlength="255" value="' . $token . '" style="" /></p>
+		<p><input id="token" name="token" type="text" size="46" maxlength="255" value="' . stripslashes($token) . '" style="" /></p>
 		<h3><label for="secret">Secret</label></h3>
-		<p><textarea name="secret" id="secret" rows="8" cols="40">' . $secret . '</textarea></p>
+		<p><textarea name="secret" id="secret" rows="8" cols="40">' . stripslashes($secret) . '</textarea></p>
 		<p class="submit"><input type="submit" name="submit" value="' . $save_text . ' &raquo;" /></p>';
 		
 		$out .= '</form>';	

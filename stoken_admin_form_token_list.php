@@ -25,7 +25,7 @@ class StokenAdminFormTokenList extends StokenAdminForm
 		$out .= '<p>For more information and examples, visit <a href="http://labs.leftcolumn.net/stoken-console/">labs.leftcolumn.net/stoken-console/</a></p>';
 		
 		$out .= '<div class="stokenTokenList">';
-		$out .= '<p><a class="btn" href="?page=stoken/stoken_admin.php&stokenpage=add"><span>Add a New Token</span></a></p>';
+		$out .= '<p><a class="btn" href="?page=stoken-console/stoken_admin.php&stokenpage=add"><span>Add a New Token</span></a></p>';
 		$out .= '<table class="stokenTable" border="0" cellspacing="0" cellpadding="4">
 			<tr>
 				<th>Token</th>
@@ -36,8 +36,8 @@ class StokenAdminFormTokenList extends StokenAdminForm
 		$styles = array('odd','even');
 		$rownum = 0;
 				
-		$url_edit = '?page=stoken/stoken_admin.php&stokenpage=edit&id=';
-		$url_del = '?page=stoken/stoken_admin.php&stokenpage=delete&id=';	
+		$url_edit = '?page=stoken-console/stoken_admin.php&stokenpage=edit&id=';
+		$url_del = '?page=stoken-console/stoken_admin.php&stokenpage=delete&id=';	
 		
 		if (isset($this->tokens) && count($this->tokens) > 0) {
 
@@ -45,8 +45,8 @@ class StokenAdminFormTokenList extends StokenAdminForm
 			foreach ($this->tokens as $onerow) {
 
 				$out .= "<tr class='" . $styles[$rownum % 2] . "'>";
-				$out .= "<td><a class='stokentext' href='{$url_edit}{$onerow->id}'>" .$onerow->token ."</a></td>";
-				$out .= "<td><a class='stokentext' href='{$url_edit}{$onerow->id}'>" .$onerow->secret ."</a></td>";
+				$out .= "<td><a class='stokentext' href='{$url_edit}{$onerow->id}'>" . stripslashes($onerow->token) ."</a></td>";
+				$out .= "<td><a class='stokentext' href='{$url_edit}{$onerow->id}'>" . stripslashes($onerow->secret) ."</a></td>";
 				$out .= "<td class='btns'><a class='btn' href='{$url_edit}{$onerow->id}'><span>Edit</span></a> <a class='btn' href='{$url_del}{$onerow->id}'><span>Delete</span></a></td>";
 				$out .= "</tr>";
 				$rownum++;

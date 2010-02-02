@@ -21,11 +21,11 @@ function stoken_show($atts) {
 		
 		$stokenToShow = $stokenTokenSecret->fetch($_POST['token']);
 		$stokenToReflect = $stokenTokenSecret->cleanToken($_POST['token']);
-		$out .= '<pre>' . $stokenToShow . '</pre>';
+		$out .= '<pre>' . stripslashes($stokenToShow) . '</pre>';
 		
 	} else {
 		
-		$out .= '<pre>' . $stokenConfig->welcomeMessage . '</pre>';
+		$out .= '<pre>' . stripslashes($stokenConfig->welcomeMessage) . '</pre>';
 		
 	}
 	
@@ -33,7 +33,7 @@ function stoken_show($atts) {
 	
 	<div class="stoken-token">';
 	$out .= '<form action="" method="post" id="stokenfetch" onload="formfocus(this);" name="stokenfetch" style="">
-		<div id="inputblock"><input id="token" name="token" type="text" maxlength="255" value="' .$stokenToReflect . '" style="" />
+		<div id="inputblock"><input id="token" name="token" type="text" maxlength="255" value="' .stripslashes($stokenToReflect) . '" style="" />
 		<input type="submit" id="stokensubmit" name="stokensubmit" value="GO &raquo;" /></div>';
 	$out .= '</form>';
 	$out .= '</div></div>';
@@ -45,7 +45,7 @@ function stoken_show($atts) {
 
 
 	function stoken_css() {
-		echo '<link type="text/css" rel="stylesheet" href="' . WP_PLUGIN_URL . '/stoken/stoken.css" />' . "\n";
+		echo '<link type="text/css" rel="stylesheet" href="' . WP_PLUGIN_URL . '/stoken-console/stoken.css" />' . "\n";
 	}
 
 	
@@ -53,7 +53,7 @@ function stoken_show($atts) {
 		$stokenConfig 			= StokenConfig::getInstance();
 		if ($stokenConfig->enableFocusOnLoad == 'yes') {
 			echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>';
-			echo '<script type="text/javascript" src="' . WP_PLUGIN_URL . '/stoken/stoken.js"></script>';
+			echo '<script type="text/javascript" src="' . WP_PLUGIN_URL . '/stoken-console/stoken.js"></script>';
   		}
 	}
 	

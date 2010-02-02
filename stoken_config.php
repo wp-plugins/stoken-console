@@ -16,7 +16,7 @@ final class StokenConfig
 		global $wpdb;
 		$this->wpdb = $wpdb;
 		
-		$this->stoken_app_version 				=  '0.7';
+		$this->stoken_app_version 				=  '0.8';
 		$this->stoken_db_version 				= get_option ( 'stoken_db_version' );
 		$this->stoken_db_table_stoken_token 	= get_option ( 'stoken_db_table_stoken_token' );
 		$this->welcomeMessage 					= get_option ( 'stoken_opt_welcome_msg' );
@@ -61,7 +61,6 @@ final class StokenConfig
 		
 
 		$out .= '<div class="stokenSettings">';
-		//	$out .= '<p><a href="?page=stoken/stoken_admin.php&stokenpage=add">Add a New Token</a></p>';
 		$out .= '<form action="" method="post" id="stoken-config" style="width: 600px; ">
 			<h3><label for="welcome_msg">Welcome Message</label></h3>
 			<p><input id="welcome_msg" name="welcome_msg" type="text" size="80" maxlength="255" value="' . $this->welcomeMessage .'" style="" /></p>

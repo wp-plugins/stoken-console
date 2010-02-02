@@ -3,8 +3,8 @@
 Plugin Name: SToken Console
 Plugin URI: http://labs.leftcolumn.net/stoken-console/
 Description: Add an interactive console to your Wordpress Site. 
-Version: 0.7
-Author: Joe Left
+Version: 0.8
+Author: labs.leftcolumn.net
 Author URI: http://labs.leftcolumn.net
 */
 

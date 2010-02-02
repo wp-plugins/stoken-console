@@ -60,6 +60,10 @@ Check the Website for support and updates: http://labs.leftcolumn.net/stoken-con
 
 == Changelog ==
 
+= 0.8 =
+* Fixed broken path introduced when the plugin name changed.
+* Fixed quote handling
+
 = 0.7 =
 * First released Version.
 

@@ -38,9 +38,7 @@ class StokenInstaller
 			$prefix = $this->wpdb->prefix;
 			
 		}
-		
-		$this->stoken_db_version = '0.1';
-		
+				
 		$this->stoken_tables['stoken_token']['name'] = $prefix . 'stoken_token';
 		$this->stoken_tables['stoken_token']['sql'] = "CREATE TABLE " . $this->stoken_tables['stoken_token']['name'] . " (
 			  `id` int(11) unsigned NOT NULL auto_increment,
@@ -57,14 +55,25 @@ class StokenInstaller
 	// install tables if necessary
 	function checkTables()
 	{
-		$detector = 0;
+		$detector = 0;	
+		$upgrade = false;
 		
-		$detector += $this->conditionallyInstall('stoken_token' );
+		$stokenConfig 		= StokenConfig::getInstance();
+		if ($stokenConfig->stoken_app_version != $stokenConfig->stoken_db_version) {
+			$detector++;
+			$upgrade = true;
+		}
+		
+		
+		$detector += $this->conditionallyInstall('stoken_token', $upgrade );
+		
+		
+
 		
 		// simple check to see whether we changed any tables
 		// if so, update the stoken version in the db
 		if ($detector > 0) {
-			update_option("stoken_db_version", $this->stoken_db_version);
+			update_option("stoken_db_version", $stokenConfig->stoken_app_version);
 			
 		}
 		$this->addDefaults();
@@ -74,18 +83,18 @@ class StokenInstaller
 	
 
 
-	function conditionallyInstall($table_base_name)
+	function conditionallyInstall($table_base_name, $upgrade = false)
 	{
 		//$table_name = $this->wpdb->prefix . $table_base_name;
 		$table_name = $this->stoken_tables[$table_base_name]['name'];
 		
-		if($this->wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+		if(($this->wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) || ($upgrade)) {
 			$sql = $this->stoken_tables[$table_base_name]['sql'];
 		
 			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 			dbDelta($sql);	
 			
-			add_option("stoken_db_table_" . $table_base_name, $table_name);
+			update_option("stoken_db_table_" . $table_base_name, $table_name);
 			
 	      return 1;
 		}
@@ -97,10 +106,10 @@ class StokenInstaller
 	{
 		$stokenConfig 		= StokenConfig::getInstance();
 		
-		$default_tokens['ver'] = 'Current SToken db version: ' . $stokenConfig->stoken_app_version;
+		$default_tokens['ver'] = 'Current SToken App version: ' . $stokenConfig->stoken_app_version;
 		$default_tokens['hi'] = 'Hey there';
 		$default_tokens['url'] = 'http://labs.leftcolumn.net/stoken-console/';
-		$default_tokens['help'] = 'Type a command below to get a response.';
+		$default_tokens['help'] = 'Type a command in the box below to get a response.';
 		
 		
 		foreach ($default_tokens as $key => $value) {
